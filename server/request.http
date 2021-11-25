@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ### 
-POST http://localhost:4000/auth/login 
+POST https://bookstore360.herokuapp.com/login 
 Content-Type: application/json
 
 {
@@ -94,4 +94,13 @@ Content-Type: application/json
 
 ###
 GET http://localhost:4000/dashboard/products/category/products?category=lap-trinh
+Content-Type: application/json
+
+
+###
+GET http://localhost:4000/dashboard/products/
+Content-Type: application/json
+
+###
+GET https://bookstore360.herokuapp.com/dashboard/products/
 Content-Type: application/json

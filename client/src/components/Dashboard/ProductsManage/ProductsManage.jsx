@@ -112,7 +112,6 @@ const ProductsManage = (props) => {
       stableDispatch(getAll());
     } else {
       // stableDispatch(getAllByCategory(category));
-      console.log('cawjc')
     }
   }, [products, category, stableDispatch]);
 
