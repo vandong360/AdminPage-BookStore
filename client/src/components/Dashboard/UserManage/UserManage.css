@@ -1,0 +1,9 @@
+.manage-user-container {
+  width: 97%;
+  height: 40rem;
+  display: block;
+  background-color: rgb(255, 255, 255);
+  margin: 1.5rem 1rem;
+  border: 1px solid rgb(191, 192, 191);
+}
+/* f9f9fa */

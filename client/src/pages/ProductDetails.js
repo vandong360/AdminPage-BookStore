@@ -1,9 +1,7 @@
 import React from 'react'
-import Header from '../components/Header/Header'
-import BreadcrumbBar from '../components/Products/Breadcrumb/BreadcrumbBar'
-import Detail from '../components/Products/Details/Details'
+import BreadcrumbBar from '../components/Dashboard/Products/Breadcrumb/BreadcrumbBar'
+import Detail from '../components/Dashboard/Products/Details/Details'
 import BlockProducts from '../components/Home/BlockProducts/BlockProducts'
-import Footer from '../components/Footer/Footer'
 
 const imgtq1 = "/images/test/tamQuoc.jpg";
 
@@ -51,11 +49,8 @@ const cateSVH = {
 export default function ProductDetails() {
   return (
     <>
-      <Header />
       <BreadcrumbBar />
       <Detail />
-      <BlockProducts title={cateSVH.title} products={cateSVH.products} />
-      <Footer />
     </>
   );
 }

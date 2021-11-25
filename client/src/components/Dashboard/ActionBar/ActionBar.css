@@ -1,0 +1,13 @@
+
+.menu-manage {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 85%;
+  height: 100%;
+}
+
+.menu-manage .link-style {
+  color: #fff;
+  text-decoration: none;
+}

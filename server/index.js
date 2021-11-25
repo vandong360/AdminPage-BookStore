@@ -1,20 +1,40 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import products from "./routes/product.route.js";
+import auth from "./routes/auth.route.js";
+import orders from "./routes/order.route.js";
+import mongoose from "mongoose";
+import dotenv from 'dotenv'
 
-conts express = require("express");
+dotenv.config()
 const app = express();
-const PORT = process.env.port || 2811;
 
-// app.use(bodyParser.json({ limit: "30mb" }));
-// app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));
-// app.use(cors());
+const PORT = process.env.PORT || 4000;
+const URI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.rsm6n.mongodb.net/Boostore?retryWrites=true&w=majority`;
 
-app.get("/taotenla/:name", (req, res) => {
-  res.send("Ten cua no la: " + req.params.name);
-});
+//connect to server
+const connectDB = async (req, res) => {
+  try {
+    await mongoose.connect(URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    })
+    console.log('MongoDB connected')
+  } catch (error) {
+    console.log(error.message)
+    process.exit(1)
+  }
+}
 
+connectDB()
+app.use(express.json());
+app.use(cors())
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+app.use("/dashboard", products);
+app.use("/auth", auth);
+app.use("/dashboard", orders);
+
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+    
+

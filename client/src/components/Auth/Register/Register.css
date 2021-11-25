@@ -1,0 +1,85 @@
+.login-page {
+  margin: 0 -10rem;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(36, 53, 61);
+}
+
+.login-page .left-block {
+  float: left;
+  width: 40%;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; 
+}
+
+.login-page .right-block {
+  float: right;
+  width: 60%;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-page .logo-box {
+  display: block;
+  padding: 1rem;
+  width: 25rem;
+  height: 9rem;
+}
+
+.login-page .logo-box img {
+  width: inherit;
+  height: inherit;
+}
+
+.register-form {
+  display: block;
+  margin: 0.5rem auto;
+  width: 30rem;
+  height: max-content;
+  background-color: white;
+  text-align: center;
+
+  border-radius: 0.5rem;
+}
+
+.register-form h2 {
+  font-weight: bold;
+  padding: 1rem;
+  color: rgb(219, 106, 14);
+}
+
+.register-form label {
+  float: left;
+  margin-left: 3rem;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.register-form .input {
+  clear: left;
+  width: 80%;
+  margin: 0.5rem auto;
+}
+
+.register-form .btn-submit {
+  display: block;
+  width: 15rem;
+  height: 2.6rem;
+  margin: 2rem auto;
+  background-color: rgb(221, 119, 36);
+}
+
+.register-form .btn-register {
+  display: block;
+  margin: 0 auto;
+  width: 10rem;
+  border: 2px solid rgb(48, 137, 238);
+}
+
+.register-form a {
+  text-decoration: none;
+}

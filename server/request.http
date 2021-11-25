@@ -1,0 +1,97 @@
+POST http://localhost:4000/auth/register 
+Content-Type: application/json
+
+{
+  "username": "congphuong",
+  "name": "Công Phượng",
+  "phone": "036157894",
+  "address": "28 Hùng Vương, Hải Châu, Đà Nẵng",
+  "password": "123456"
+}
+
+### 
+POST http://localhost:4000/auth/login 
+Content-Type: application/json
+
+{
+  "username": "congphuong",
+  "password": "123456"
+}
+
+###
+PUT http://localhost:4000/auth/update/619d3c15933c0d61da52e4ac
+Content-Type: application/json
+
+{
+  "cart": [
+    {
+      "productId": "61990aafa51279f060cc997b",
+      "productImage": "abc",
+      "productName": "san pham 1152",
+      "productPrice": 310000,
+      "productDiscount": 12,
+      "quantity": 1
+    },
+    {
+      "productId": "6197a218b06fbecd7ad08c3a",
+      "productImage": "abc",
+      "productName": "Tam quoc",
+      "productPrice": 310000,
+      "productDiscount": 12,
+      "quantity": 5
+    },
+    {
+      "productId": "619b983a89c63088d5eb9d90",
+      "productImage": "abc",
+      "productName": "Tay du ky",
+      "productPrice": 310000,
+      "productDiscount": 12,
+      "quantity": 2
+    }   
+  ]
+}
+
+###
+DELETE http://localhost:4000/auth/delete/6196604756346803494c50ef
+Content-Type: application/json
+
+### 
+POST http://localhost:4000/dashboard/products/post
+Content-Type: application/json
+
+{
+  "name": "Thuỷ Hử",
+  "image": "https://bitly.com.vn/z6p4w6",
+  "price": 320000,
+  "oldPrice": 400000,
+  "discount": 20,
+  "description": "Tam quốc diễn nghĩa của La Quán Trung là một trong những kiệt tác của văn học thế giới. Ngay từ khi được dịch sang chữ quốc ngữ vào đầu thế kỷ XX, tiểu thuyết này đã được bạn đọc Việt Nam đón nhận nồng nhiệt; từ đó đến nay có vô vàn ấn bản Tam quốc ra đời, mỗi ấn bản lại mang một màu sắc khác nhau. Để có thêm sự lựa chọn cho bạn đọc, Đông A ra mắt bản Tam quốc diễn nghĩa 2 tập bìa cứng.",
+  "author": "La Quán Trung",
+  "nhaXB": "NXB Văn Học",
+  "namXB": "2020",
+  "soTrang": "1892",
+  "rating": 0,
+  "category": "Văn Học"
+}
+
+###
+PUT http://localhost:4000/dashboard/products/update/61990aafa51279f060cc997b
+Content-Type: application/json
+
+{
+  "name": "Thuỷ Hử",
+  "image": "https://cdn0.fahasa.com/media/catalog/product/cache/1/small_image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/m/image_244718_1_4729.jpg",
+  "price": 254200,
+  "oldPrice": 310000,
+  "discount": 18,
+  "description": "Thủy Hử là một áng văn chương tuyệt bút, được coi là một trong tứ đại danh tác của văn học cổ điển Trung Hoa. Trải qua sáu trăm năm thăng trầm của lịch sử, nhiều triều đại bị thay thế, nhiều biến cố đã xảy ra, biết bao vật đổi sao dời… Nhưng Thủy Hử của Thi Nại Am vẫn đi vào lòng người của biết bao thế hệ độc giả đến từ khắp nơi trên thế giới. Câu chuyện về một trăm lẻ tám người anh hùng nơi bến nước cùng tụ tập vì đại nghĩa, cùng quyết chí bền gan làm nên sự nghiệp lớn đã truyền cảm hứng cho rất nhiều loại hình nghệ thuật khác làm nên những tác phẩm để đời.",
+  "author": "Thi Nại Am",
+  "nhaXB": "NXB Văn Học",
+  "namXB": "2018",
+  "soTrang": "1204",
+  "category": "Văn Học"
+}
+
+###
+GET http://localhost:4000/dashboard/products/category/products?category=lap-trinh
+Content-Type: application/json

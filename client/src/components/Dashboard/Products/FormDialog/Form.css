@@ -1,0 +1,12 @@
+.form-dialog .input {
+  width: 95%;
+}
+
+.form-dialog img {
+  width: 100%;
+}
+
+.form-dialog label {
+  color: rgb(211, 118, 12);
+  font-weight: bold;
+}

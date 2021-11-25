@@ -1,0 +1,67 @@
+.login-page {
+  margin: 0 -10rem;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(36, 53, 61);
+}
+
+.login-page .logo-box {
+  display: block;
+  margin: auto;
+  padding: 1rem;
+  width: 20rem;
+  height: 7rem;
+}
+
+.login-page img {
+  width: inherit;
+  height: inherit;
+}
+
+.login-form {
+  display: block;
+  margin: 2rem auto;
+  width: 28rem;
+  height: max-content;
+  background-color: white;
+  text-align: center;
+
+  border-radius: 0.5rem;
+}
+
+.login-form h2 {
+  font-weight: bold;
+  padding: 1rem;
+  color: rgb(219, 106, 14);
+}
+
+.login-form label {
+  float: left;
+  margin-left: 2rem;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.login-form .input {
+  clear: left;
+  width: 80%;
+  margin: 0.5rem auto;
+}
+
+.login-form .btn-submit {
+  width: 22rem;
+  height: 2.6rem;
+  margin: 1rem 0;
+  margin-bottom: 2rem;
+  background-color: rgb(221, 119, 36);
+}
+
+.login-form .btn-register {
+  width: 10rem;
+  margin-bottom: 1rem;
+  border: 2px solid rgb(48, 137, 238);
+}
+
+.login-form a {
+  text-decoration: none;
+}
