@@ -7,15 +7,85 @@ Content-Type: application/json
   "products": []
 }
 
+###get user cart
+GET http://localhost:4000/cart/61a0b118c4b5a4c7f34aa251
+Content-Type: application/json
+
+
+###update cart
+PUT http://localhost:4000/cart/61a0b1eeeb67770feee9c343
+Content-Type: application/json
+
+{
+  "products": [
+    {
+      "productId": "6197a218b06fbecd7ad08c3a"
+    },
+    {
+      "productId": "619b983a89c63088d5eb9d90"
+    }
+  ]
+}
+
+###delete user cart
+DELETE http://localhost:4000/cart/61a0b118c4b5a4c7f34aa251
+Content-Type: application/json
+
+
+#############################################################################################################################
+
+
+###create new order
+POST http://localhost:4000/orders/
+Content-Type: application/json
+
+{
+  "userId": "61a0b118c4b5a4c7f34aa251",
+  "userName": "Công Phượng",
+  "products": [
+    {
+      "productId": "6197a218b06fbecd7ad08c3a",
+      "price": 220000,
+      "quantity": 1
+    }
+  ],
+  "amount": 1,
+  "totalPrice": 220000,
+  "address": "14 Nguyễn Trãi, Hải Châu, Đà Nẵng",
+  "phone": "036157894"
+}
+
+###get all order for admin
+GET http://localhost:4000/dashboard/orders/
+Content-Type: application/json
+
+
+###get all user order 
+GET http://localhost:4000/orders/61a0f1e672ae3cb7669f4919
+Content-Type: application/json
+
+
+###change status order
+PUT http://localhost:4000/dashboard/orders/61a0f7bb94310ba296c7b31a
+Content-Type: application/json
+
+{
+  "status": "canceled" 
+}
+
+
+#############################################################################################################################
+
+
 ### create new user
 POST http://localhost:4000/auth/register 
 Content-Type: application/json
 
 {
-  "username": "congphuong",
-  "name": "Công Phượng",
+  "username": "tuananh",
+  "name": "Tuấn Anh",
   "phone": "036157894",
-  "address": "28 Hùng Vương, Hải Châu, Đà Nẵng",
+  "address": "14 Nguyễn Trãi, Hải Châu, Đà Nẵng",
   "password": "123456"
 }
 
@@ -24,13 +94,17 @@ POST  http://localhost:4000/auth/login
 Content-Type: application/json
 
 {
-  "username": "congphuong",
+  "username": "tuananh",
   "password": "123456"
 }
 
 ###Delete user
 DELETE http://localhost:4000/auth/delete/619685aadccb883f3474bcd8
 Content-Type: application/json
+
+
+#############################################################################################################################
+
 
 ###
 PUT http://localhost:4000/auth/update/619d3c15933c0d61da52e4ac
@@ -103,12 +177,12 @@ Content-Type: application/json
 }
 
 ###Get product by category
-GET http://localhost:4000/dashboard/get?category=van-hoc
+GET http://localhost:4000/dashboard/get?category=lap-trinh
 Content-Type: application/json
 
 
 ###Find product by Id
-GET http://localhost:4000/dashboard/product/6197a218b06fbecd7ad08c3a
+GET http://localhost:4000/dashboard/product/619b983a89c63088d5eb9d90
 Content-Type: application/json
 
 ###https://bookstore360.herokuapp.com/

@@ -107,9 +107,9 @@ export const getUserRegister = async (req, res) => {
 
   try {
     //check for existing user
-    const user = await User.findOne({ username });
+    const oldUser = await User.findOne({ username });
 
-    if (user)
+    if (oldUser)
       return res
         .status(400)
         .json({ success: false, message: "Tên người dùng đã tồn tại!" });
@@ -124,7 +124,7 @@ export const getUserRegister = async (req, res) => {
       address,
       password: hashedPassword,
     });
-    await newUser.save();
+   const user = await newUser.save();
 
     //json web token 
     const accessToken = jwt.sign(
@@ -134,9 +134,9 @@ export const getUserRegister = async (req, res) => {
 
     res.json({
       success: true,
-      message: "User created successfully!",
+      message: "Đăng ký thành công!",
       accessToken,
-      name
+      user,
     });
 
   } catch (error) {

@@ -1,11 +1,18 @@
 import express from "express";
-import { newOrder, getAllOrder, getOrderByUserId, changeStateOrder } from "../controllers/order.controller.js";
+import {
+  newOrder,
+  getAllOrder,
+  getUserOrder,
+  changeStatusOrder,
+} from "../controllers/order.controller.js";
 
 const router = express.Router();
+//for admin
+router.get("/dashboard/orders/", getAllOrder);
+router.put("/dashboard/orders/:id", changeStatusOrder);
 
-router.get("/orders/", getAllOrder);
-router.post("/orders/post", newOrder);
-router.put("/orders/update/:id", changeStateOrder);
-router.get("/orders/user/:id", getOrderByUserId);
+//for user
+router.get("/orders/:userId", getUserOrder);
+router.post("/orders/", newOrder);
 
 export default router;

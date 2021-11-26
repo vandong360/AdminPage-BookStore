@@ -35,7 +35,7 @@ app.use(cors())
 app.use("/auth", auth);
 //for admin page
 app.use("/dashboard", products);
-app.use("/dashboard", orders);
+app.use("/", orders);
 //for app
 app.use("/cart", cart);
 

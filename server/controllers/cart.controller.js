@@ -47,15 +47,15 @@ export const updateCart = async (req, res) => {
 // @controller delete cart when delete user
 export const deleteCart = async (req, res) => {
   try {
-    const id = req.params.id;
-    const cart = await Cart.findByIdAndRemove(id);
+    const userId = req.params.userId;
+    const cart = await Cart.findOneAndRemove({ userId }).exec();
     if (!cart) {
       res.json({
         success: false,
         message: "Cannot delete cart!",
       });
     } else {
-      res.json({ success: true, message: "Cart have been deleted!"});
+      res.json({ success: true, message: "Cart have been deleted!" });
     }
   } catch (error) {
     console.error(error);
@@ -68,16 +68,8 @@ export const deleteCart = async (req, res) => {
 export const getCart = async (req, res) => {
   try {
     const userId = req.params.userId;
-    const cart = await Cart.findOne({userId}).exec();
-    if (!cart) {
-      res.json({
-        success: false,
-        message: "Cannot get user cart!",
-        cart: null,
-      });
-    } else {
-      res.json({ success: true, message: "Good!", cart });
-    }
+    const cart = await Cart.findOne({ userId }).exec();
+    res.json({ success: true, message: "Good!", cart });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Internal server error" });
