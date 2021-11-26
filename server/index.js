@@ -2,8 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import products from "./routes/product.route.js";
-import auth from "./routes/auth.route.js";
 import orders from "./routes/order.route.js";
+import auth from "./routes/auth.route.js";
+import cart from "./routes/cart.route.js";
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
 
@@ -31,9 +32,13 @@ connectDB()
 app.use(express.json());
 app.use(cors())
 
-app.use("/dashboard", products);
 app.use("/auth", auth);
+//for admin page
+app.use("/dashboard", products);
 app.use("/dashboard", orders);
+//for app
+app.use("/cart", cart);
+
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
     

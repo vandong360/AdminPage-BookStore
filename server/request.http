@@ -1,3 +1,13 @@
+###create new cart when user register
+POST http://localhost:4000/cart/
+Content-Type: application/json
+
+{
+  "userId": "61a0b118c4b5a4c7f34aa251",
+  "products": []
+}
+
+### create new user
 POST http://localhost:4000/auth/register 
 Content-Type: application/json
 
@@ -9,14 +19,18 @@ Content-Type: application/json
   "password": "123456"
 }
 
-### 
-POST https://bookstore360.herokuapp.com/login 
+### user login
+POST  http://localhost:4000/auth/login
 Content-Type: application/json
 
 {
   "username": "congphuong",
   "password": "123456"
 }
+
+###Delete user
+DELETE http://localhost:4000/auth/delete/619685aadccb883f3474bcd8
+Content-Type: application/json
 
 ###
 PUT http://localhost:4000/auth/update/619d3c15933c0d61da52e4ac
@@ -50,10 +64,6 @@ Content-Type: application/json
     }   
   ]
 }
-
-###
-DELETE http://localhost:4000/auth/delete/6196604756346803494c50ef
-Content-Type: application/json
 
 ### 
 POST http://localhost:4000/dashboard/products/post
@@ -92,11 +102,13 @@ Content-Type: application/json
   "category": "Văn Học"
 }
 
-###
-GET http://localhost:4000/dashboard/get?category=lap-trinh
+###Get product by category
+GET http://localhost:4000/dashboard/get?category=van-hoc
 Content-Type: application/json
 
 
-###
-GET https://bookstore360.herokuapp.com/dashboard/products/
+###Find product by Id
+GET http://localhost:4000/dashboard/product/6197a218b06fbecd7ad08c3a
 Content-Type: application/json
+
+###https://bookstore360.herokuapp.com/

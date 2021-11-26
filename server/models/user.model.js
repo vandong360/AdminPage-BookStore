@@ -18,15 +18,6 @@ const AdminSchema = new Schema({
   },
 });
 
-const CartSchema = new Schema({
-  productId: { type: Schema.Types.ObjectId, ref: 'products', unique: true },
-  productImage: String,
-  productName: String,
-  productPrice: Number,
-  productDiscount: Number,
-  quantity: Number,
-});
-
 
 const UserSchema = new Schema({
   username: {
@@ -50,10 +41,6 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  cart: {
-    type: [CartSchema],
-    default: [],
-  },
   createdAt: {
     type: Date,
     default: Date.now(),
@@ -67,3 +54,4 @@ const UserSchema = new Schema({
 export const Admin = mongoose.model("admins", AdminSchema);
 
 export const User = mongoose.model('users', UserSchema);
+
