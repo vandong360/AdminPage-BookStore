@@ -25,7 +25,7 @@ export const getAllByCategory = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Internal server error" });
-  }
+  } 
 };
 
 // @route /products/post

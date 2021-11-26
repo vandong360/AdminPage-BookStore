@@ -68,7 +68,7 @@ export default function ActionBar() {
             </ListItemButton>
           </Link>
 
-          <Link to="/dashboard/products" className="link-style">
+          <Link to="/dashboard/product" className="link-style">
             <ListItemButton onClick={handleClick}>
               <ListItemIcon sx={iconStyle}>
                 <LocalOfferIcon />

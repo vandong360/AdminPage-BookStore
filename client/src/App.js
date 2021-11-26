@@ -18,7 +18,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Redirect to="/dashboard/products" />
+          <Redirect to="/dashboard/product" />
         </Route>
         <Route
           path="/auth/admin/login"
@@ -31,59 +31,59 @@ function App() {
           component={(props) => <Auth {...props} authRoute="register" />}
         />
         <Route
-          path="/dashboard/products"
+          path="/dashboard/product"
           exact
-          component={(props) => <Dashboard {...props} direcRoute="products" />}
+          component={(props) => <Dashboard {...props} direcRoute="product" />}
         />
 
         <Route
-          path="/dashboard/products/giao-khoa"
+          path="/dashboard/product/giao-khoa"
           exact
           component={(props) => (
-            <Dashboard {...props} direcRoute="products/giao-khoa" />
+            <Dashboard {...props} direcRoute="product/giao-khoa" />
           )}
         />
         <Route
-          path="/dashboard/products/van-hoc"
+          path="/dashboard/product/van-hoc"
           exact
           component={(props) => (
-            <Dashboard {...props} direcRoute="products/van-hoc" />
+            <Dashboard {...props} direcRoute="product/van-hoc" />
           )}
         />
 
         <Route
-          path="/dashboard/products/kinh-te"
+          path="/dashboard/product/kinh-te"
           exact
           component={(props) => (
-            <Dashboard {...props} direcRoute="products/kinh-te" />
+            <Dashboard {...props} direcRoute="product/kinh-te" />
           )}
         />
         <Route
-          path="/dashboard/products/thieu-nhi"
+          path="/dashboard/product/thieu-nhi"
           exact
           component={(props) => (
-            <Dashboard {...props} direcRoute="products/thieu-nhi" />
+            <Dashboard {...props} direcRoute="product/thieu-nhi" />
           )}
         />
         <Route
-          path="/dashboard/products/tam-ly"
+          path="/dashboard/product/tam-ly"
           exact
           component={(props) => (
-            <Dashboard {...props} direcRoute="products/tam-ly" />
+            <Dashboard {...props} direcRoute="product/tam-ly" />
           )}
         />
         <Route
-          path="/dashboard/products/lap-trinh"
+          path="/dashboard/product/lap-trinh"
           exact
           component={(props) => (
-            <Dashboard {...props} direcRoute="products/lap-trinh" />
+            <Dashboard {...props} direcRoute="product/lap-trinh" />
           )}
         />
         <Route
-          path="/dashboard/products/khoa-hoc"
+          path="/dashboard/product/khoa-hoc"
           exact
           component={(props) => (
-            <Dashboard {...props} direcRoute="products/khoa-hoc" />
+            <Dashboard {...props} direcRoute="product/khoa-hoc" />
           )}
         />
 

@@ -5,7 +5,7 @@ export const API_URL =
   process.env.NODE_ENV !== "production"
     ? "http://localhost:4000/"
     : "https://bookstore360.herokuapp.com/";
-export const API_PRODUCT =
+export const API_PRODUCT = 
   process.env.NODE_ENV !== "production"
-    ? "http://localhost:4000/dashboard/products"
+    ? "http://localhost:4000/dashboard/product"
     : "https://bookstore360.herokuapp.com/dashboard/products";

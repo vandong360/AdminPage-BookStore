@@ -6,7 +6,7 @@ import ListItemText from "@mui/material/ListItemText";
 import LabelImportantTwoToneIcon from "@mui/icons-material/LabelImportantTwoTone";
 
 const CategoryItem = (props) => {
-  const url = "/dashboard/products/";
+  const url = "/dashboard/product/";
   const category = props.category;
   const primary = props.primary;
 

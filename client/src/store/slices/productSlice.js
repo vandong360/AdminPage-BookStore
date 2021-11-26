@@ -19,7 +19,7 @@ export const getAll = createAsyncThunk(
 );
 
 export const getAllByCategory = createAsyncThunk(
-  "dashboard/products?category=[]",
+  "dashboard/get?category",
   async (category, thunkAPI) => {
     try {
       const data = await ProductService.getAllByCategory(category);
@@ -153,8 +153,12 @@ const productSlice = createSlice({
     },
 
     [getAllByCategory.fulfilled]: (state, action) => {
-      state.message = null
+      state.message = null;
       state.products = action.payload.products;
+    },
+    [getAllByCategory.rejected]: (state, action) => {
+      state.message = null;
+      state.products = null;
     },
 
     [createProduct.fulfilled]: (state, action) => {

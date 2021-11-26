@@ -93,13 +93,9 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:4000/dashboard/products/category/products?category=lap-trinh
+GET http://localhost:4000/dashboard/get?category=lap-trinh
 Content-Type: application/json
 
-
-###
-GET http://localhost:4000/dashboard/products/
-Content-Type: application/json
 
 ###
 GET https://bookstore360.herokuapp.com/dashboard/products/

@@ -57,7 +57,7 @@ const Register = () => {
       const response = await dispatch(register({ username, password }));
       if (response.payload.success) {
         setSuccessful(true);
-        history.push("/dashboard/products");
+        history.push("/dashboard/product");
       } else {
         setSuccessful(false)
         setAlert({ type: "danger", message: response.payload.message });
@@ -71,7 +71,7 @@ const Register = () => {
   };
 
   if (isAuthenticated)
-    return <Redirect to="/dashboard/products" />
+    return <Redirect to="/dashboard/product" />
 
   return (
     <div className="login-page">

@@ -108,12 +108,12 @@ const ProductsManage = (props) => {
   const category = props.category;
 
   useEffect(() => {
-    if (!products && category === "all") {
+    if (category === "all") {
       stableDispatch(getAll());
     } else {
-      // stableDispatch(getAllByCategory(category));
+      stableDispatch(getAllByCategory(category));
     }
-  }, [products, category, stableDispatch]);
+  }, []);
 
   //table code here: -------------------------------------------------------------------------------
   const [page, setPage] = React.useState(0);

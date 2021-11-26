@@ -19,10 +19,7 @@ const register = async (username, password) => {
 //async - await converted
 const login = async (username, password) => {
   try {
-    const response = await axios.post(
-      "https://bookstore360.herokuapp.com/auth/admin/login",
-      { username, password }
-    );
+    const response = await axios.post(API_URL + "auth/admin/login", { username, password });
     
     if (response.data.success)
       localStorage.setItem(LOCAL_STORAGE_ADMIN_TOKEN, response.data.accessToken);

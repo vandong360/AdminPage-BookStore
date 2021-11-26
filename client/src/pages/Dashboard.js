@@ -46,14 +46,14 @@ const Dashboard = ({ direcRoute }) => {
   body = (
     <>
       {direcRoute === "users" && <UserManage />}
-      {direcRoute === "products" && <ProductsManage category="all" />}
-      {direcRoute === "products/giao-khoa" && <ProductsManage category="giao-khao" />}
-      {direcRoute === "products/van-hoc" && <ProductsManage category="van-hoc" />}
-      {direcRoute === "products/kinh-te" && <ProductsManage category="kinh-te" />}
-      {direcRoute === "products/thieu-nhi" && <ProductsManage category="thieu-nhi" />}
-      {direcRoute === "products/tam-ly" && <ProductsManage category="tam-ly" />}
-      {direcRoute === "products/lap-trinh" && <ProductsManage category="lap-trinh" />}
-      {direcRoute === "products/khoa-hoc" && <ProductsManage category="khoa-hoc" />}
+      {direcRoute === "product" && <ProductsManage category="all" />}
+      {direcRoute === "product/giao-khoa" && <ProductsManage category="giao-khao" />}
+      {direcRoute === "product/van-hoc" && <ProductsManage category="van-hoc" />}
+      {direcRoute === "product/kinh-te" && <ProductsManage category="kinh-te" />}
+      {direcRoute === "product/thieu-nhi" && <ProductsManage category="thieu-nhi" />}
+      {direcRoute === "product/tam-ly" && <ProductsManage category="tam-ly" />}
+      {direcRoute === "product/lap-trinh" && <ProductsManage category="lap-trinh" />}
+      {direcRoute === "product/khoa-hoc" && <ProductsManage category="khoa-hoc" />}
 
     </>
   );

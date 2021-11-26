@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_PRODUCT } from "./constants";
+import { API_PRODUCT, API_URL } from "./constants";
 
 const getAllProduct = async () => {
   try {
@@ -55,7 +55,7 @@ const delProduct = async (id) => {
 
 const getAllByCategory = async (category) => {
   try {
-    const response = await axios.get(API_PRODUCT + `?category=[${category}]`);
+    const response = await axios.get(API_URL + `dashboard/get?category=${category}`);
     return response.data;
   } catch (error) {
     if (error.data) return error.data;

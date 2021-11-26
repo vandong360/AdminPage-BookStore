@@ -33,7 +33,7 @@ function Login(props) {
     try {
       const data = await dispatch(login({ username, password }));
       if (data.payload.success) 
-        history.push('/dashboard/products')
+        history.push('/dashboard/product')
       else {
         setLoading(false)
         setAlert({ type: "danger", message: data.payload.message });
@@ -48,7 +48,7 @@ function Login(props) {
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   if (isAuthenticated) {
-    return <Redirect to="/dashboard/products" />;
+    return <Redirect to="/dashboard/product" />;
   }
 
   return (
