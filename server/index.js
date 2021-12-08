@@ -32,7 +32,7 @@ connectDB()
 app.use(express.json());
 app.use(cors())
 
-app.use("/auth", auth);
+app.use("/", auth);
 //for admin page
 app.use("/dashboard", products);
 app.use("/", orders);

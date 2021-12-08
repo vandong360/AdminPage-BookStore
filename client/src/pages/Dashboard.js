@@ -1,5 +1,6 @@
 import ActionBar from "../components/Dashboard/ActionBar/ActionBar";
 import UserManage from "../components/Dashboard/UserManage/UserManage";
+import OrderManage from "../components/Dashboard/OrderManage/OrderManage";
 import PrimaryAppBar from "../components/Dashboard/AppBar/AppBar";
 import ProductsManage from "../components/Dashboard/ProductsManage/ProductsManage";
 import { useSelector } from "react-redux";
@@ -45,27 +46,43 @@ const Dashboard = ({ direcRoute }) => {
 
   body = (
     <>
+      {direcRoute === "orders" && <OrderManage />}
+      {direcRoute === "orders/detail" && <OrderManage />}
       {direcRoute === "users" && <UserManage />}
       {direcRoute === "product" && <ProductsManage category="all" />}
-      {direcRoute === "product/giao-khoa" && <ProductsManage category="giao-khao" />}
+      {direcRoute === "product/giao-khoa" && <ProductsManage category="giao-khoa" />}
       {direcRoute === "product/van-hoc" && <ProductsManage category="van-hoc" />}
       {direcRoute === "product/kinh-te" && <ProductsManage category="kinh-te" />}
       {direcRoute === "product/thieu-nhi" && <ProductsManage category="thieu-nhi" />}
       {direcRoute === "product/tam-ly" && <ProductsManage category="tam-ly" />}
       {direcRoute === "product/lap-trinh" && <ProductsManage category="lap-trinh" />}
       {direcRoute === "product/khoa-hoc" && <ProductsManage category="khoa-hoc" />}
+    </>
+  );
 
+  let searchBar = (
+    <>
+      {direcRoute === "users" && <PrimaryAppBar search="Tìm username.." />}
+      {direcRoute === "orders" && <PrimaryAppBar search="Tìm kiếm.." />}
+      {direcRoute === "product" && <PrimaryAppBar search="Tìm sách.." />}
+      {direcRoute === "product/giao-khoa" && <PrimaryAppBar search="Tìm sách.." />}
+      {direcRoute === "product/van-hoc" && <PrimaryAppBar search="Tìm sách.." />}
+      {direcRoute === "product/kinh-te" && <PrimaryAppBar search="Tìm sách.." />}
+      {direcRoute === "product/thieu-nhi" && <PrimaryAppBar search="Tìm sách.." />}
+      {direcRoute === "product/tam-ly" && <PrimaryAppBar search="Tìm sách.." />}
+      {direcRoute === "product/lap-trinh" && <PrimaryAppBar search="Tìm sách.." />}
+      {direcRoute === "product/khoa-hoc" && <PrimaryAppBar search="Tìm sách.." />}
     </>
   );
 
   return (
     <div style={sx}>
       <div style={leftSide}>
-        <ActionBar /> 
+        <ActionBar />
       </div>
-      
+
       <div style={rightSide}>
-        <PrimaryAppBar /> 
+        {searchBar}
         {body}
       </div>
     </div>

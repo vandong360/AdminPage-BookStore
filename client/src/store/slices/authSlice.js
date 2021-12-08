@@ -56,12 +56,48 @@ export const logout = createAsyncThunk('logout', async () => {
   await AuthService.logout(LOCAL_STORAGE_ADMIN_TOKEN, LOCAL_STORAGE_ADMIN_NAME);
 })
 
+
+export const getAllUser = createAsyncThunk(
+  "dashboard/users/",
+  async (thunkAPI) => {
+    try {
+      const data = await AuthService.getAllUser();
+      if (data.success) {
+        return data;
+      } else {
+        return thunkAPI.rejectWithValue(data);
+      }
+    } catch (error) {
+      console.log(error.response.message);
+      return thunkAPI.rejectWithValue(error.response.message);
+    }
+  }
+);
+
+export const deleteUser = createAsyncThunk(
+  "dashboard/users/delete",
+  async (id, thunkAPI) => {
+    try {
+      const data = await AuthService.delUser(id);
+      if (data.success) {
+        return data;
+      } else {
+        return thunkAPI.rejectWithValue(data);
+      }
+    } catch (error) {
+      console.log(error.response.message);
+      return thunkAPI.rejectWithValue(error.response.message);
+    }
+  }
+);
+
+
 const userToken = localStorage.getItem(LOCAL_STORAGE_ADMIN_TOKEN);
 const username = localStorage.getItem(LOCAL_STORAGE_ADMIN_NAME);
 
 const initialState = userToken
-  ? { isAuthenticated: true, userToken, username, message: null }
-  : { isAuthenticated: false, userToken: null, username: null, message: null };
+  ? { isAuthenticated: true, userToken, username, message: null, allUser: null}
+  : { isAuthenticated: false, userToken: null, username: null, message: null, allUser: null};
 
 const authSlice = createSlice({
   name: "auth",
@@ -79,11 +115,12 @@ const authSlice = createSlice({
       state.username = null;
       state.message = action.payload.message;
     },
+
     [login.fulfilled]: (state, action) => {
       state.isAuthenticated = true;
       state.userToken = action.payload.accessToken;
       state.username = action.payload.username;
-      state.message = null; 
+      state.message = null;
     },
     [login.rejected]: (state, action) => {
       state.isAuthenticated = false;
@@ -91,13 +128,25 @@ const authSlice = createSlice({
       state.username = null;
       state.message = action.payload.message;
     },
+
     [logout.fulfilled]: (state) => {
-      state.isAuthenticated = false; 
+      state.isAuthenticated = false;
       state.userToken = null;
       state.username = null;
     },
-  }
-})
+
+    [getAllUser.fulfilled]: (state, action) => {
+      state.allUser = action.payload.users;
+    },
+
+    [deleteUser.fulfilled]: (state, action) => {
+      state.message = action.payload.message;
+    },
+    [deleteUser.rejected]: (state, action) => {
+      state.message = action.payload.message;
+    },
+  },
+});
 
 // Reducer
 const { reducer } = authSlice;

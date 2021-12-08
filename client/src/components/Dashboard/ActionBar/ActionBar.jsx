@@ -23,7 +23,7 @@ const MenuItem = [
   { category: "giao-khoa", primary: "Sách Giáo Khoa" },
   { category: "van-hoc", primary: "Sách Văn Học" },
   { category: "kinh-te", primary: "Sách Kinh Tế" },
-  { category: "kinh-te", primary: "Sách Thiếu Nhi" },
+  { category: "thieu-nhi", primary: "Sách Thiếu Nhi" },
   { category: "tam-ly", primary: "Sách Tâm Lý" },
   { category: "lap-trinh", primary: "Sách Lập Trình" },
   { category: "khoa-hoc", primary: "Sách Khoa Học" },
@@ -59,7 +59,7 @@ export default function ActionBar() {
             </ListSubheader>
           }
         >
-          <Link to="/dashboard/order" className="link-style">
+          <Link to="/dashboard/orders" className="link-style">
             <ListItemButton>
               <ListItemIcon sx={iconStyle}>
                 <EventAvailableIcon />

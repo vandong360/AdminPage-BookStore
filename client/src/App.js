@@ -1,7 +1,3 @@
-// import React, { useState, useEffect, useCallback } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import Login from "./components/Auth/Login/Login";
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,6 +8,7 @@ import {
 } from "react-router-dom";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
+import OrderDetailPage from "./pages/OrderDetail";
 
 function App() {
   return (
@@ -23,30 +20,30 @@ function App() {
         <Route
           path="/auth/admin/login"
           exact
-          component={(props) => <Auth {...props} authRoute="login" />}
+          render={(props) => <Auth {...props} authRoute="login" />}
         />
         <Route
           path="/auth/admin/register"
           exact
-          component={(props) => <Auth {...props} authRoute="register" />}
+          render={(props) => <Auth {...props} authRoute="register" />}
         />
         <Route
           path="/dashboard/product"
           exact
-          component={(props) => <Dashboard {...props} direcRoute="product" />}
+          render={(props) => <Dashboard {...props} direcRoute="product" />}
         />
 
         <Route
           path="/dashboard/product/giao-khoa"
           exact
-          component={(props) => (
+          render={(props) => (
             <Dashboard {...props} direcRoute="product/giao-khoa" />
           )}
         />
         <Route
           path="/dashboard/product/van-hoc"
           exact
-          component={(props) => (
+          render={(props) => (
             <Dashboard {...props} direcRoute="product/van-hoc" />
           )}
         />
@@ -54,43 +51,54 @@ function App() {
         <Route
           path="/dashboard/product/kinh-te"
           exact
-          component={(props) => (
+          render={(props) => (
             <Dashboard {...props} direcRoute="product/kinh-te" />
           )}
         />
         <Route
           path="/dashboard/product/thieu-nhi"
           exact
-          component={(props) => (
+          render={(props) => (
             <Dashboard {...props} direcRoute="product/thieu-nhi" />
           )}
         />
         <Route
           path="/dashboard/product/tam-ly"
           exact
-          component={(props) => (
+          render={(props) => (
             <Dashboard {...props} direcRoute="product/tam-ly" />
           )}
         />
         <Route
           path="/dashboard/product/lap-trinh"
           exact
-          component={(props) => (
+          render={(props) => (
             <Dashboard {...props} direcRoute="product/lap-trinh" />
           )}
         />
         <Route
           path="/dashboard/product/khoa-hoc"
           exact
-          component={(props) => (
+          render={(props) => (
             <Dashboard {...props} direcRoute="product/khoa-hoc" />
           )}
         />
 
         <Route
+          path="/dashboard/orders"
+          exact
+          render={(props) => <Dashboard {...props} direcRoute="orders" />}
+        />
+        <Route
+          path="/dashboard/orders/detail/"
+          exact
+          render={(props) => <OrderDetailPage {...props} />}
+        />
+
+        <Route
           path="/dashboard/users"
           exact
-          component={(props) => <Dashboard {...props} direcRoute="users" />}
+          render={(props) => <Dashboard {...props} direcRoute="users" />}
         />
       </Switch>
     </Router>

@@ -10,14 +10,14 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import * as Yup from "yup";
-import PopupAlert from "../../PopupAlert";
+import PopupAlert from "../../../PopupAlert";
 
 import {
   openDialog,
   createProduct,
   deleteProduct,
   updateProduct,
-} from "../../../../store/slices/productSlice";
+} from "../../../../../store/slices/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 

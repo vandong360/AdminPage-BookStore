@@ -14,7 +14,7 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import { BrowserRouter as Link } from "react-router-dom";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import PostAddIcon from "@mui/icons-material/PostAdd";
-import FormDialog from "../Products/FormDialog/Form";
+import FormDialog from "../ProductsManage/Products/FormDialog/Form";
 
 import { logout } from "../../../store/slices/authSlice";
 import { openDialog } from "../../../store/slices/productSlice";
@@ -61,7 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimaryAppBar() {
+export default function PrimaryAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { username } = useSelector((state) => state.auth);
   const { setOpen } = useSelector((state) => state.products);
@@ -130,7 +130,7 @@ export default function PrimaryAppBar() {
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder="Search…"
+                placeholder={props.search}
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>

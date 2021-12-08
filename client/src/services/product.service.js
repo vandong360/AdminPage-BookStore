@@ -3,7 +3,7 @@ import { API_PRODUCT, API_URL } from "./constants";
 
 const getAllProduct = async () => {
   try {
-    const response = await axios.get(API_PRODUCT + '/');
+    const response = await axios.get(API_PRODUCT + "/");
     return response.data;
   } catch (error) {
     if (error.data) return error.data;
@@ -11,9 +11,7 @@ const getAllProduct = async () => {
   }
 };
 
-const createProduct = async (
-data
-) => {
+const createProduct = async (data) => {
   try {
     const response = await axios.post(API_PRODUCT + "/post", data);
     return response.data;
@@ -25,7 +23,7 @@ data
 
 const getProductById = async (id) => {
   try {
-    const response = await axios.get(API_PRODUCT +`/${id}`);
+    const response = await axios.get(API_PRODUCT + `/${id}`);
     return response.data;
   } catch (error) {
     if (error.data) return error.data;
@@ -55,7 +53,9 @@ const delProduct = async (id) => {
 
 const getAllByCategory = async (category) => {
   try {
-    const response = await axios.get(API_URL + `dashboard/get?category=${category}`);
+    const response = await axios.get(
+      API_URL + `dashboard/get?category=${category}`
+    );
     return response.data;
   } catch (error) {
     if (error.data) return error.data;

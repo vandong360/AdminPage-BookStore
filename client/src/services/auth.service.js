@@ -32,6 +32,26 @@ const login = async (username, password) => {
   }
 }
 
+const getAllUser = async () => {
+  try {
+    const response = await axios.get(API_URL + "dashboard/users/");
+    return response.data;
+  } catch (error) {
+    if (error.data) return error.data;
+    else return { success: false, message: error.message };
+  }
+};
+
+const delUser = async (id) => {
+  try {
+    const response = await axios.delete(API_URL + `dashboard/users/${id}`);
+    return response.data;
+  } catch (error) {
+    if (error.data) return error.data;
+    else return { success: false, message: error.message };
+  }
+};
+
 const logout = (userToken, username) => {
   localStorage.removeItem(userToken);
   localStorage.removeItem(username);
@@ -40,7 +60,9 @@ const logout = (userToken, username) => {
 const authService = {
   register,
   login,
-  logout
-}
+  logout,
+  getAllUser,
+  delUser,
+};
 
 export default authService

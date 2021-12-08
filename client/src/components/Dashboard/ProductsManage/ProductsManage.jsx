@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import "./ProductsManage.css";
-import FormDialog from "../Products/FormDialog/Form";
+import FormDialog from "./Products/FormDialog/Form";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import {
@@ -117,7 +117,7 @@ const ProductsManage = (props) => {
 
   //table code here: -------------------------------------------------------------------------------
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(7);
   const [getProduct, setProduct] = React.useState("");
 
   const handleChangePage = (event, newPage) => {
@@ -207,7 +207,7 @@ const ProductsManage = (props) => {
         </Table>
       </TableContainer>
       <TablePagination
-        rowsPerPageOptions={[10, 15, 20]}
+        rowsPerPageOptions={[7, 10, 12]}
         component="div"
         count={rows.length}
         rowsPerPage={rowsPerPage}

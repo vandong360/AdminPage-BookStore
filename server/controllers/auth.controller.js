@@ -211,6 +211,8 @@ export const updateUser = async (req, res) => {
   }
 };
 
+// @route /delete/:id
+// @controller delete user for admin
 export const deleteUser = async (req, res) => {
   try {
     const id = req.params.id;
@@ -229,5 +231,16 @@ export const deleteUser = async (req, res) => {
   }
 }
 
+// @route /users/
+// @controller get all user for admin
+export const getAllUser = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json({ success: true, message: "All here!", users });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
 
 
