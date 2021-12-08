@@ -41,6 +41,7 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  totalOrder: Number,
   createdAt: {
     type: Date,
     default: Date.now(),

@@ -71,3 +71,10 @@ const ProductSchema = new Schema({
 });
 
 export const Product = mongoose.model('products', ProductSchema);
+
+
+// collection User {
+//   name,
+//   username,
+//   ....  
+// }

@@ -3,7 +3,7 @@ POST http://localhost:4000/cart/
 Content-Type: application/json
 
 {
-  "userId": "61a0b118c4b5a4c7f34aa251",
+  "userId": "61a0f1e672ae3cb7669f4919",
   "products": []
 }
 
@@ -13,13 +13,13 @@ Content-Type: application/json
 
 
 ###update cart
-PUT http://localhost:4000/cart/61a0b1eeeb67770feee9c343
+PUT http://localhost:4000/cart/61b0d03e65d8af7f4a0451da
 Content-Type: application/json
 
 {
   "products": [
     {
-      "productId": "6197a218b06fbecd7ad08c3a"
+      "productId": "61990aafa51279f060cc997b"
     },
     {
       "productId": "619b983a89c63088d5eb9d90"
@@ -95,7 +95,7 @@ Content-Type: application/json
 
 #############################################################################################################################
 
-### Get all user for admin 
+### Get all user for admin https://bookstore360.herokuapp.com/dashboard/users/ 
 GET http://localhost:4000/dashboard/users/ 
 Content-Type: application/json
 
