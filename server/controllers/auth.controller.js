@@ -235,7 +235,7 @@ export const deleteUser = async (req, res) => {
 // @controller get all user for admin
 export const getAllUser = async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find().sort({ _id: -1 });
     res.json({ success: true, message: "All here!", users });
   } catch (error) {
     console.error(error);

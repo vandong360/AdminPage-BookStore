@@ -39,7 +39,7 @@ export const changeStatusOrder = async (req, res) => {
 // @controller get all order
 export const getAllOrder = async (req, res) => {
   try {
-    const orders = await Order.find();
+    const orders = await Order.find().sort({ _id: -1 });
     res.json({ success: true, message: "All here!", orders });
   } catch (error) {
     console.error(error);

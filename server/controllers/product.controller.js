@@ -7,13 +7,27 @@ import jwt from "jsonwebtoken";
 // @controller get all product
 export const getAllProduct = async (req, res) => {
   try {
-    const products = await Product.find({});
+    const products = await Product.find({}).sort({ _id: -1 });
     res.json({ success: true, message: null, products });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
+
+
+// @route /product/trending
+// @controller get all product
+export const getHotProduct = async (req, res) => {
+  try {
+    const products = await Product.find({}).sort({ _id: -1 });
+    res.json({ success: true, message: null, products });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
 
 // @route /products/:category
 // @controller get all product by category

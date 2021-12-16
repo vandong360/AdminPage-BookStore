@@ -131,6 +131,9 @@ Content-Type: application/json
 
 #############################################################################################################################
 
+##Get all product
+GET http://localhost:4000/dashboard/product
+Content-Type: application/json
 
 ### add new product for Admin
 POST http://localhost:4000/dashboard/products/post
