@@ -155,3 +155,7 @@ GET http://localhost:4000/dashboard/product/619b983a89c63088d5eb9d90
 Content-Type: application/json
 
 ###https://bookstore360.herokuapp.com/
+
+##Get product trending
+GET http://localhost:4000/dashboard/product/trending
+Content-Type: application/json
