@@ -1,28 +1,37 @@
-###create new cart when user register
+###create new cart when user register https://bookstore360.herokuapp.com/
 POST http://localhost:4000/cart/
 Content-Type: application/json
 
 {
-  "userId": "61a0f1e672ae3cb7669f4919",
+  "userId": "61d0915216536a36880c68fd",
   "products": []
 }
 
 ###get user cart
-GET http://localhost:4000/cart/61a0b118c4b5a4c7f34aa251
+GET http://localhost:4000/cart/61d0915216536a36880c68fd
 Content-Type: application/json
 
 
 ###update cart
-PUT http://localhost:4000/cart/61b0d03e65d8af7f4a0451da
+PUT http://localhost:4000/cart/61d1b2202794ef09036ab870
 Content-Type: application/json
 
 {
   "products": [
     {
-      "productId": "61990aafa51279f060cc997b"
+      "productId": "61990aafa51279f060cc997b",
+      "productImg": "https://cdn0.fahasa.com/media/catalog/product/cache/1/small_image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/m/image_195509_1_40337.jpg",
+      "productName":  "Tan Quoc",
+      "productPrice": 300000,
+      "productDiscount":  25
     },
     {
-      "productId": "619b983a89c63088d5eb9d90"
+      "productId": "619b983a89c63088d5eb9d90",
+      "productImg": "https://cdn0.fahasa.com/media/catalog/product/cache/1/small_image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/m/image_195509_1_40337.jpg",
+      "productName":  "Tan Quoc",
+      "productPrice": 230000,
+      "productDiscount":  35,
+      "quantity": 3
     }
   ]
 }
@@ -100,15 +109,15 @@ GET http://localhost:4000/dashboard/users/
 Content-Type: application/json
 
 ### user register 
-POST http://localhost:4000/auth/register 
+POST https://bookstore360.herokuapp.com/auth/register 
 Content-Type: application/json
 
 {
-  "username": "test43",
-  "name": "Dead line",
   "phone": "036157894",
   "address": "14 Nguyễn Trãi, Hải Châu, Đà Nẵng",
-  "password": "123456"
+  "password": "123456",
+  "username": "test7",
+  "name": "Dead line"
 }
 
 ### user login https://bookstore360.herokuapp.com/auth/login
