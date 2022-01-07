@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 
 import { getAllUser, deleteUser } from "../../../store/slices/authSlice";
+import { getAll } from "../../../store/slices/orderSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 // custom table here
@@ -22,9 +23,19 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PopupAlert from "../PopupAlert";
+import moment from "moment";
 
-function createData(name, username, phone, totalOrder, action, createdAt, address) {
-  const age = createdAt
+function createData(
+  name,
+  username,
+  phone,
+  totalOrder,
+  action,
+  created,
+  address
+) {
+  const createdAt = moment(created).format("MMMM Do YYYY, h:mm:ss a");
+  const age = moment(created).startOf("day").fromNow();
   return {
     name,
     username,
@@ -32,7 +43,8 @@ function createData(name, username, phone, totalOrder, action, createdAt, addres
     totalOrder,
     age,
     action,
-    createdAt, address
+    createdAt,
+    address,
   };
 }
 
@@ -52,11 +64,13 @@ function Row(props) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">{row.name}</TableCell>
+        <TableCell component="th" scope="row">
+          {row.name}
+        </TableCell>
         <TableCell align="right">{row.username}</TableCell>
         <TableCell align="right">{row.phone}</TableCell>
-        <TableCell align="right">2</TableCell>
-        <TableCell align="right">20</TableCell>
+        <TableCell align="right">{row.totalOrder}</TableCell>
+        <TableCell align="right">{row.age}</TableCell>
         <TableCell align="right">{row.action}</TableCell>
       </TableRow>
 
@@ -76,15 +90,15 @@ function Row(props) {
                 </TableHead>
 
                 <TableBody>
-                    <TableRow >
-                      <TableCell component="th" scope="row">
-                        {row.createdAt} 
-                      </TableCell>
-                      <TableCell>{row.address}</TableCell>
-                      {/* <TableCell align="right">
+                  <TableRow>
+                    <TableCell component="th" scope="row">
+                      {row.createdAt}
+                    </TableCell>
+                    <TableCell>{row.address}</TableCell>
+                    {/* <TableCell align="right">
                         {Math.round(moreRow.amount * row.createdAt * 100) / 100}
                       </TableCell> */}
-                    </TableRow>
+                  </TableRow>
                 </TableBody>
               </Table>
             </Box>
@@ -107,6 +121,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 export default function UserManage() {
   const { allUser } = useSelector((state) => state.auth);
+  const { orders } = useSelector((state) => state.orders);
   const [alert, setAlert] = React.useState(null);
 
   const dispatch = useDispatch();
@@ -114,35 +129,45 @@ export default function UserManage() {
 
   React.useEffect(() => {
     stableDispatch(getAllUser());
+    stableDispatch(getAll());
   }, []);
 
   const handleDelete = async (userId) => {
-    console.log(userId)
     try {
-       const response = await dispatch(deleteUser(userId));
-       if (response.payload.success) {
-         setAlert({ type: "success", message: response.payload.message });
-         setTimeout(() => {
-           setAlert(null);
-           window.location.reload();
-         }, 2000);
-       } else {
-         setAlert({ type: "warning", message: response.payload.message });
-         setTimeout(() => setAlert(null), 5000);
-       }
-    } catch (error) {
-      
-    }
-  }
+      const response = await dispatch(deleteUser(userId));
+      if (response.payload.success) {
+        setAlert({ type: "success", message: response.payload.message });
+        setTimeout(() => {
+          setAlert(null);
+          window.location.reload();
+        }, 2000);
+      } else {
+        setAlert({ type: "warning", message: response.payload.message });
+        setTimeout(() => setAlert(null), 5000);
+      }
+    } catch (error) {}
+  };
 
   const actionIcon = (userId) => (
     <IconButton onClick={() => handleDelete(userId)}>
-      <PersonRemoveIcon style={{color: "red"}}/>
+      <PersonRemoveIcon style={{ color: "red" }} />
     </IconButton>
   );
 
-  let rows = []
-  
+  const countingOrder = (userId) => {
+    let totalOrder = 0;
+    if (orders !== null) {
+      for (let item of orders) {
+        if (item.userId.indexOf(userId) > -1) {
+          totalOrder++;
+        }
+      }
+      return totalOrder;
+    } else console.log('')
+  };
+
+  let rows = [];
+
   //Get data and import to table
   if (allUser !== null) {
     rows = allUser.map((user) => {
@@ -150,13 +175,15 @@ export default function UserManage() {
         user.name,
         user.username,
         user.phone,
-        5,
+        countingOrder(user._id),
         actionIcon(user._id),
         user.createdAt,
         user.address
       );
-    })
-  } else { console.log('')}
+    });
+  } else {
+    console.log("");
+  }
 
   return (
     <div>
@@ -172,7 +199,9 @@ export default function UserManage() {
                 <StyledTableCell align="right">username</StyledTableCell>
                 <StyledTableCell align="right">Số điện thoại</StyledTableCell>
                 <StyledTableCell align="right">Số đơn đã đặt</StyledTableCell>
-                <StyledTableCell align="right">Tuổi tài khoản&nbsp;(day)</StyledTableCell>
+                <StyledTableCell align="right">
+                  Tuổi tài khoản
+                </StyledTableCell>
                 <StyledTableCell align="right">Xoá User</StyledTableCell>
               </TableRow>
             </TableHead>

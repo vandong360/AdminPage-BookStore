@@ -160,6 +160,7 @@ export default function FormDialog(props) {
   };
 
   const handleEdit = () => setEdit(!edit);
+  
   const handleSubmit = async (formValue) => {
     if (typeSubmit === "update") {
       handleUpdate(formValue);

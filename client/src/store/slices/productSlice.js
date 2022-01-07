@@ -136,6 +136,10 @@ export const openDialog = createAsyncThunk("/", (data) => {
   return setOpen;
 });
 
+export const filterProducts = createAsyncThunk("/search", (result) => {
+  return result
+});
+
 const initialState = {
   message: null,
   products: null,
@@ -187,6 +191,10 @@ const productSlice = createSlice({
     [getProductById.rejected]: (state, action) => {
       state.product = null;
       state.message = action.payload.message;
+    },
+
+    [filterProducts.fulfilled]: (state, action) => {
+      state.products = action.payload;
     },
   },
 });

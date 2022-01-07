@@ -17,7 +17,11 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import FormDialog from "../ProductsManage/Products/FormDialog/Form";
 
 import { logout } from "../../../store/slices/authSlice";
-import { openDialog } from "../../../store/slices/productSlice";
+import {
+  openDialog,
+  filterProducts,
+  getAll,
+} from "../../../store/slices/productSlice";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -61,10 +65,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+//main
 export default function PrimaryAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { username } = useSelector((state) => state.auth);
-  const { setOpen } = useSelector((state) => state.products);
+  const { setOpen, products } = useSelector((state) => state.products);
 
   const isMenuOpen = Boolean(anchorEl);
   const dispatch = useDispatch();
@@ -109,9 +114,39 @@ export default function PrimaryAppBar(props) {
     </Menu>
   );
 
+  const [key, setKey] = useState("");
+  const [copyData, setCopyData] = useState([]);
+
+  React.useEffect(() => {
+    async function getData() {
+      const response = await dispatch(getAll());
+      if (response.payload.success) {
+        setCopyData(response.payload.products.slice());
+      }
+    }
+    getData();
+  }, []);
+
+  const handleSearch = async (event) => {
+    setKey(event.target.value);
+    if (key.length > 0) {
+      setTimeout(() => {
+        let result = [];
+        for (let item of copyData) {
+          if (item.name.toLowerCase().indexOf(key) > -1) {
+            result.push(item);
+          }
+        }
+        dispatch(filterProducts(result));
+        // await setTimeout(() => {
+        //   dispatch(filterProducts(result));
+      }, 100);
+    } else dispatch(filterProducts(copyData));
+  };
+
   return (
     <Box sx={{ flexGrow: 1, position: "relative" }}>
-      {setOpen ? <FormDialog product={{}}  /> : ""}
+      {setOpen ? <FormDialog product={{}} /> : ""}
       <AppBar sx={{ background: "#00293a" }} position="static">
         <Toolbar>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
@@ -132,6 +167,8 @@ export default function PrimaryAppBar(props) {
               <StyledInputBase
                 placeholder={props.search}
                 inputProps={{ "aria-label": "search" }}
+                value={key}
+                onChange={handleSearch}
               />
             </Search>
           </Box>
@@ -139,15 +176,6 @@ export default function PrimaryAppBar(props) {
           <Box sx={{ flexGrow: 1 }} />
 
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            {/* <IconButton
-              size="large"
-              color="inherit"
-            >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
-
             <IconButton size="large" color="inherit" onClick={handleAddnew}>
               <PostAddIcon />
             </IconButton>

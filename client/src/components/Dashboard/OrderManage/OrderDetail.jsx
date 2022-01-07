@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import { OrderItem } from "./OrderList";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import moment from "moment";
 
 import { changeStatus, getOneOrder } from "../../../store/slices/orderSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +19,7 @@ const MainBox = styled(Box)({
   margin: "1rem auto",
   backgroundColor: "#ecf1f7",
   borderRadius: "7px",
-  overflow: "scroll"
+  overflow: "scroll",
 });
 
 const SpaceBox = styled(Box)({
@@ -58,10 +59,10 @@ export default function OrderDetail(props) {
   const id = props.order._id;
 
   React.useEffect(() => {
-    dispatch(getOneOrder(id))
+    dispatch(getOneOrder(id));
   }, []);
 
-  let status
+  let status;
 
   const handleAccept = async () => {
     status = "shipping";
@@ -89,7 +90,8 @@ export default function OrderDetail(props) {
           <HeaderBox>
             <div>
               <Typography variant="subtitle1" align="left" color="green">
-                Đặt ngày {order.createdAt}
+                Đặt ngày{" "}
+                {moment(order.createdAt).format("MMMM Do YYYY, h:mm:ss a")}
               </Typography>
             </div>
 
@@ -140,7 +142,19 @@ export default function OrderDetail(props) {
                     Huỷ
                   </Button>
                 </>
-              ) : ""}
+              ) : order.status === "shipping" ? (
+                <Typography variant="subtitle1" align="left" color="green">Bắt đầu giao ngày {moment(order.updatedAt).format("LL")}</Typography>
+              ) : order.status === "delivered" ? (
+                <Typography variant="subtitle1" align="left" color="blue">
+                  Giao thành công vào lúc{" "}
+                  {moment(order.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
+                </Typography>
+              ) : (
+                <Typography variant="subtitle1" align="left" color="red">
+                  Đã huỷ lúc{" "}
+                  {moment(order.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
+                </Typography>
+              )}
             </div>
           </HeaderBox>
           <hr style={{ marginTop: "0", marginBottom: "0rem" }} />

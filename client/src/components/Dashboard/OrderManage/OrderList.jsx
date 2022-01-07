@@ -9,6 +9,7 @@ import {
 import Typography from "@mui/material/Typography";
 import { Image } from "react-bootstrap";
 import Grid from "@mui/material/Grid";
+import moment from "moment";
 
 const OrderBox = styled(Box)({
   width: "90%",
@@ -94,7 +95,7 @@ export default function Order(props) {
               # {props.id}
             </Typography>
             <Typography variant="subtitle1" color="white">
-              {props.timestamps}
+              {moment(props.timestamps).format("MMMM Do YYYY, h:mm:ss a")}
             </Typography>
             <h6 style={{ color: "#df622d", fontWeight: "bold" }}>
               {(() => {

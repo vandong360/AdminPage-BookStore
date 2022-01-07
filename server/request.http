@@ -8,30 +8,23 @@ Content-Type: application/json
 }
 
 ###get user cart
-GET http://localhost:4000/cart/61d0915216536a36880c68fd
+GET https://bookstore360.herokuapp.com/cart/61d0915216536a36880c68fd
 Content-Type: application/json
 
 
 ###update cart
-PUT http://localhost:4000/cart/61d1b2202794ef09036ab870
+PUT https://bookstore360.herokuapp.com/cart/61d1b2202794ef09036ab870
 Content-Type: application/json
 
 {
   "products": [
-    {
-      "productId": "61990aafa51279f060cc997b",
-      "productImg": "https://cdn0.fahasa.com/media/catalog/product/cache/1/small_image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/m/image_195509_1_40337.jpg",
-      "productName":  "Tan Quoc",
-      "productPrice": 300000,
-      "productDiscount":  25
-    },
     {
       "productId": "619b983a89c63088d5eb9d90",
       "productImg": "https://cdn0.fahasa.com/media/catalog/product/cache/1/small_image/600x600/9df78eab33525d08d6e5fb8d27136e95/i/m/image_195509_1_40337.jpg",
       "productName":  "Tan Quoc",
       "productPrice": 230000,
       "productDiscount":  35,
-      "quantity": 3
+      "quantity": 2
     }
   ]
 }
@@ -86,7 +79,7 @@ Content-Type: application/json
 
 
 ###get all user order 
-GET http://localhost:4000/orders/user/61a0f1e672ae3cb7669f4919
+GET https://bookstore360.herokuapp.com/orders/user/61d2baf213cda25ed3b505d7
 Content-Type: application/json
 
 ###get one order 
@@ -130,8 +123,12 @@ Content-Type: application/json
 }
 
 ###update - change infor user - for user
-PUT http://localhost:4000/auth/update/619d3c15933c0d61da52e4ac
+PUT http://localhost:4000/auth/update/61d2f24ea3dd76787a1f6137
 Content-Type: application/json
+
+{
+  "phone": "09237959"
+}
 
 ###Delete user
 DELETE http://localhost:4000/dashboard/users/61a6e8ef5dd4973ad67aa982
